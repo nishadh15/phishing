@@ -1,0 +1,17 @@
+.git
+.gitignore
+.vscode
+.venv
+__pycache__
+*.pyc
+mlflow.db
+mlruns
+notebooks
+tests
+README.md
+Dockerfile
+.dockerignore
+dataset/*.bak
+models/v*.pkl
+render.yaml
+.github

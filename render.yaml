@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: phishing-detector
+    runtime: docker
+    plan: free
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /openapi.json
+
+    # redeploy automatically on every push to main
+    autoDeployTrigger: commit
+
+    # ...but only when something the API actually uses changes
+    # (editing the README or tests does not trigger a new deploy)
+    buildFilter:
+      paths:
+        - src/**
+        - models/model.pkl
+        - dataset/phishing_domains_1000.csv
+        - requirements.txt
+        - Dockerfile
